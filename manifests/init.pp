@@ -2,7 +2,7 @@
 class graylog {
 
 # Install Java
-class { 'graylog::java': }
+#class { 'graylog::java': }
 
 # Install Elasticsearch
 #class { 'graylog::elastic': }
