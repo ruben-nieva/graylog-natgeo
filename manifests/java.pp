@@ -1,4 +1,4 @@
-class graylog-natgeo::java{
+class graylog::java{
 
  #Install Java
  class { 'jdk_oracle': }
