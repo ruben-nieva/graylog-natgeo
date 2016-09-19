@@ -17,17 +17,17 @@ class graylog::elastic{
   },
  }
 
-elasticsearch::instance { 'es-01': }
+#elasticsearch::instance { 'es-01': }
 
-elasticsearch::plugin{ 'mobz/elasticsearch-head':
-  module_dir => 'head',
-  instances => [ 'es-01' ],
-}
+#elasticsearch::plugin{ 'mobz/elasticsearch-head':
+#  module_dir => 'head',
+#  instances => [ 'es-01' ],
+#}
 
-elasticsearch::plugin{ 'royrusso/elasticsearch-HQ':
-  module_dir => 'hq',
-  instances => [ 'es-01' ],
-}
+#elasticsearch::plugin{ 'royrusso/elasticsearch-HQ':
+#  module_dir => 'hq',
+#  instances => [ 'es-01' ],
+#}
 
 
 }
