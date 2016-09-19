@@ -1,8 +1,8 @@
 # Class: graylog
-class graylog {
+class graylog-natgeo {
 
 # Install Java
-class { 'graylog::java': }
+class { 'graylog-natgeo::java': }
 
 # Install Elasticsearch
 #class { 'graylog::elastic': }
