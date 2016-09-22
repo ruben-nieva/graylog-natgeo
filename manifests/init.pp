@@ -1,5 +1,5 @@
 # Class: graylog
-class graylog {
+class graylog_natgeo {
 
 # Install Java
 #class { 'graylog::java': }

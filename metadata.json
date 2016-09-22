@@ -1,5 +1,5 @@
 {
-  "name": "graylog",
+  "name": "graylog_natgeo",
   "version": "0.1.0",
   "author": "Ruben Nieva",
   "summary": "Graylog Implementation module class.",

@@ -1,4 +1,4 @@
-class graylog::master{
+class graylog_natgeo::master{
 
 class { 'jdk_oracle': }
 

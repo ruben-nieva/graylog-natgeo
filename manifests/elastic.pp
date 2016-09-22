@@ -1,4 +1,4 @@
-class graylog::elastic{
+class graylog_natgeo::elastic{
 
  class { 'jdk_oracle': }
 
