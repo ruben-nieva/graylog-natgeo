@@ -1,4 +1,4 @@
-class graylog::mongodb{
+class graylog_natgeo::mongodb{
 
 class {'::mongodb::globals':
   manage_package_repo => true,
