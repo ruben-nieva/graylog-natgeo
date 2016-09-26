@@ -2,6 +2,26 @@ class graylog_natgeo::mongodb{
 
 $disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
 
+file { "$disable_hugepages":
+    ensure => present,
+    source => 'puppet:///modules/graylog_natgeo/disable-transparent-hugepages',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+ }
+
+exec {"run_on_boot_up":
+  require => File[$disable_hugepages],
+  command => "update-rc.d disable-transparent-hugepages defaults",
+  path    => '/usr/sbin:/usr/bin/:/bin/:/sbin/',
+}
+
+exec {"disable hugepages":
+  require => File[$disable_hugepages],
+  command => "$disable_hugepages start",
+  path    => '/usr/sbin:/usr/bin/:/bin/:/sbin/',
+}
+
 class {'::mongodb::globals':
   manage_package_repo => true,
   version => '3.0.4'
@@ -15,19 +35,5 @@ class {'::mongodb::server':
 
 #class {'::mongodb::client':}
 
-file { "$disable_hugepages":
-    ensure => present,
-    #source => "files/disable-transparent-hugepages",
-    source => 'puppet:///modules/graylog_natgeo/disable-transparent-hugepages',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
- }
-
-exec {"run_on_boot_up":
-  require => File[$disable_hugepages],
-  command => "update-rc.d disable-transparent-hugepages defaults",
-  path    => '/usr/sbin:/usr/bin/:/bin/:/sbin/',
-}
 
 }
