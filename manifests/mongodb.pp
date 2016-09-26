@@ -31,9 +31,9 @@ class {'::mongodb::server':
   replset => 'rsmain',
   replset_config => { 'rsmain' => { ensure  => present, members => ['graylog-mongo01:27017', 'graylog-mongo02:27017', 'graylog-mongo03:27017']  }  },
   bind_ip => ['0.0.0.0']
-}
+}->
 
-#class {'::mongodb::client':}
+class {'::mongodb::client':}
 
 
 }
