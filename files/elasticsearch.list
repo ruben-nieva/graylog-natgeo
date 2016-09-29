@@ -1,0 +1,2 @@
+deb [ arch=amd64 ] http://apt.int.ngeo.com/packages.elastic.co/elasticsearch/2.x/debian stable main
+deb [ arch=amd64 ] http://apt.int.ngeo.com/packages.elastic.co/elasticsearch/1.7/debian stable main

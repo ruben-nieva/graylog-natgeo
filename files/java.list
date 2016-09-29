@@ -1,0 +1,2 @@
+deb [ arch=amd64 ] http://apt.int.ngeo.com/ppa.launchpad.net/webupd8team/java/ubuntu trusty main 
+deb-src [ arch=amd64 ] http://apt.int.ngeo.com/ppa.launchpad.net/webupd8team/java/ubuntu trusty main
