@@ -1,6 +1,6 @@
 class graylog_natgeo::java{
 
-file { "java.list":
+file { "/etc/apt/sources.list.d/java.list":
     ensure => present,
     source => 'puppet:///modules/graylog_natgeo/java.list',
     owner  => 'root',
