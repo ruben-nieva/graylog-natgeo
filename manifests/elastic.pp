@@ -1,6 +1,8 @@
 class graylog_natgeo::elastic{
 
- class { 'jdk_oracle': }
+ #class { 'jdk_oracle': }
+
+ class { 'graylog_natgeo::java': }
 
  class { 'elasticsearch':
   ensure => 'present',
