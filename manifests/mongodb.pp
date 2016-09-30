@@ -2,8 +2,6 @@ class graylog_natgeo::mongodb (
 $script_name = 'disable-transparent-hugepages'
 ){
 
-$disable_hugepages = "/etc/init.d/$script_name"
-
 if $facts['hostname'] == 'graylog-mongo01' {
   warning('Server is graylogmongo01')
   $disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
