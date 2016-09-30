@@ -1,6 +1,9 @@
-class graylog_natgeo::mongodb{
+class graylog_natgeo::mongodb (
+$script = 'disable-transparent-hugepages'
+){
 
-$disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
+$path = "/etc/init.d"
+$disable_hugepages = "$path/$script"
 
 file { "$disable_hugepages":
     ensure => present,
