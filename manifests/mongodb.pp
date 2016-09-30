@@ -4,11 +4,11 @@ $script_name = 'disable-transparent-hugepages'
 
 if $facts['hostname'] == 'graylog-mongo01' {
   warning('Server is graylogmongo01')
-  $disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
+  $disable_hugepages = '/etc/init.d/disable_hugepages'
 }
 else{
  warning('This NTP module does not yet work on our Mac laptops.')
- $disable_hugepages = '/etc/init.d/disable_hugepages'
+ $disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
 }
 
 
