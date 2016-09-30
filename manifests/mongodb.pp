@@ -1,9 +1,16 @@
 class graylog_natgeo::mongodb (
-$script = 'disable-transparent-hugepages'
+$script_name = 'disable-transparent-hugepages'
 ){
 
-$path = "/etc/init.d"
-$disable_hugepages = "$path/$script"
+$disable_hugepages = "/etc/init.d/$script_name"
+
+if $facts['hostname'] == 'graylog-mongo01' {
+  warning('Server is graylogmongo01')
+}
+else{
+ warning('This NTP module does not yet work on our Mac laptops.')
+}
+
 
 file { "$disable_hugepages":
     ensure => present,
