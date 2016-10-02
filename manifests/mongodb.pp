@@ -3,10 +3,11 @@ $script_name = 'disable-transparent-hugepages'
 ){
 
 if $hostname == 'graylog-mongo02' {
-  warning('Server is graylogmongo01')
+  notify ("Server is graylogmongo02")
   $disable_hugepages = '/etc/init.d/disable_hugepages'
 }
 else{
+notify ("Server is $hostname")
  $disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
 }
 
