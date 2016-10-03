@@ -12,7 +12,7 @@ notify ("Server is $hostname")
 }
 
 
-$hosts = hiera('replset_members')
+$hosts = hiera_array('replset_members')
 
 file { "$disable_hugepages":
     ensure => present,
