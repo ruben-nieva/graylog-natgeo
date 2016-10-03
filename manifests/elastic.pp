@@ -2,7 +2,7 @@ class graylog_natgeo::elastic{
 
  class { 'jdk_oracle': }
 
- #class { 'graylog_natgeo::java': }
+$elastic_unicast_hosts = hiera_array('elastic_unicast_hosts')
 
  class { 'elasticsearch':
   ensure => 'present',
@@ -12,7 +12,8 @@ class graylog_natgeo::elastic{
   config => {
  	'cluster.name' => 'elasticsearch',
  	'discovery.zen.ping.unicast.enabled' => 'false',
- 	'discovery.zen.ping.unicast.hosts'  => ['graylog-elasticsearch01', 'graylog-elasticsearch02', 'graylog-elasticsearch03'],
+ 	#'discovery.zen.ping.unicast.hosts'  => ['graylog-elasticsearch01', 'graylog-elasticsearch02', 'graylog-elasticsearch03'],
+  'discovery.zen.ping.unicast.hosts'  => $elastic_unicast_hosts,
  	'network.host' => $hostname,
  	'http.port' => '9200',
   'datadir'   => '/var/lib/elasticsearch-data',
