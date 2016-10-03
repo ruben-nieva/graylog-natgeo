@@ -3,6 +3,7 @@ class graylog_natgeo::master{
 $elastic_shards = hiera ('graylog::elasticsearch_shards')
 $elastic_replicas = hiera ('graylog::elasticsearch_replicas')
 $elastic_hosts = hiera_array ('graylog::elasticsearch_hosts')
+$graylog_mongodb_uri = hiera ('graylog::mongodb_uri')
 
 class { 'jdk_oracle': }
 
@@ -30,7 +31,7 @@ class { 'graylog::server':
    'rest_transport_uri'                                 => "http://$ipaddress_eth1:12900",
    'web_listen_uri'                                     => 'http://0.0.0.0:9000',
    #'mongodb_uri'                                        => 'mongodb://graylog-mongo01,graylog-mongo02,graylog-mongo03/graylog2',
-   'mongodb_uri'                                        => $mongodb_uri,
+   'mongodb_uri'                                        => $graylog_mongodb_uri,
    'mongodb_max_connections'                            => 1000,
    'mongodb_threads_allowed_to_block_multiplier'        => 5,
   }
