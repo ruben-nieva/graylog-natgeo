@@ -1,18 +1,8 @@
-class graylog_natgeo::mongodb (
-$script_name = 'disable-transparent-hugepages'
-){
+class graylog_natgeo::mongodb {
 
-if $hostname == 'graylog-mongo02' {
-  #notify ("Server is graylogmongo02")
-  $disable_hugepages = '/etc/init.d/disable_hugepages'
-}
-else{
-#notify ("Server is $hostname")
- $disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
-}
+$disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
 
-
-$hosts = hiera_array('replset_members')
+$replset_members = hiera_array('mongo_replset_members')
 
 file { "$disable_hugepages":
     ensure => present,
@@ -42,7 +32,7 @@ class {'::mongodb::globals':
 class {'::mongodb::server':
   replset => 'rsmain',
   #replset_config => { 'rsmain' => { ensure  => present, members => ['graylog-mongo01:27017', 'graylog-mongo02:27017', 'graylog-mongo03:27017']  }  },
-  replset_config => { 'rsmain' => { ensure  => present, members => [$hosts] }  },
+  replset_config => { 'rsmain' => { ensure  => present, members => $replset_members }  },
   bind_ip => ['0.0.0.0']
 }->
 
