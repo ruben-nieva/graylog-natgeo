@@ -42,7 +42,7 @@ class {'::mongodb::globals':
 class {'::mongodb::server':
   replset => 'rsmain',
   #replset_config => { 'rsmain' => { ensure  => present, members => ['graylog-mongo01:27017', 'graylog-mongo02:27017', 'graylog-mongo03:27017']  }  },
-  replset_config => { 'rsmain' => { ensure  => present, members => [$replset_members] }  },
+  replset_config => { 'rsmain' => { ensure  => present, members => [$hosts] }  },
   bind_ip => ['0.0.0.0']
 }->
 
