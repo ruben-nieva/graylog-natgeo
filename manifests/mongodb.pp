@@ -12,6 +12,8 @@ notify ("Server is $hostname")
 }
 
 
+$hosts = hiera('replset_members')
+
 file { "$disable_hugepages":
     ensure => present,
     source => 'puppet:///modules/graylog_natgeo/disable-transparent-hugepages',
@@ -39,7 +41,8 @@ class {'::mongodb::globals':
 
 class {'::mongodb::server':
   replset => 'rsmain',
-  replset_config => { 'rsmain' => { ensure  => present, members => ['graylog-mongo01:27017', 'graylog-mongo02:27017', 'graylog-mongo03:27017']  }  },
+  #replset_config => { 'rsmain' => { ensure  => present, members => ['graylog-mongo01:27017', 'graylog-mongo02:27017', 'graylog-mongo03:27017']  }  },
+  replset_config => { 'rsmain' => { ensure  => present, members => [$replset_members] }  },
   bind_ip => ['0.0.0.0']
 }->
 
