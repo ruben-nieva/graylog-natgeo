@@ -6,6 +6,7 @@ $elastic_hosts = hiera ('ilm_graylog::elasticsearch_hosts')
 $graylog_mongodb_uri = hiera ('ilm_graylog::mongodb_uri')
 $graylog_version = hiera ('ilm_graylog::version')
 $repo_version = hiera('ilm_graylog::repo_version')
+$is_master = hiera('ilm_graylog::is_master', false)
 
 class { 'jdk_oracle': }
 
@@ -18,7 +19,7 @@ class { 'graylog::server':
  config          => {
    'password_secret' => 'emHOAf1uvzlsJwvPfbhzk9RnzLLbpg01G2KMFkitftB8iIjBq2TuDK02TX2qFh3xAcPQDlKzEC0gnYty8Mk4nuN1vTiXGt2M',
    'root_password_sha2' => '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
-   'is_master' =>  true,
+   'is_master' =>  $is_master,
    'root_timezone' =>  'America/Chicago',
    'message_journal_enabled'                            => true,
    'message_journal_dir'                                => '/var/lib/graylog-server/journal',
