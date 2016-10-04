@@ -5,11 +5,12 @@ $elastic_replicas = hiera ('ilm_graylog::elasticsearch_replicas')
 $elastic_hosts = hiera ('ilm_graylog::elasticsearch_hosts')
 $graylog_mongodb_uri = hiera ('ilm_graylog::mongodb_uri')
 $graylog_version = hiera ('ilm_graylog::version')
+$repo_version = hiera('ilm_graylog::repo_version')
 
 class { 'jdk_oracle': }
 
 class { 'graylog::repository':
- version => '2.0'
+ version => $repo_version
 }->
 
 class { 'graylog::server':
