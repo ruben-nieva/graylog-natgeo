@@ -1,9 +1,9 @@
 class graylog_natgeo::master{
 
-$elastic_shards = hiera ('graylog::elasticsearch_shards')
-$elastic_replicas = hiera ('graylog::elasticsearch_replicas')
-$elastic_hosts = hiera_array ('graylog::elasticsearch_hosts')
-$graylog_mongodb_uri = hiera ('graylog::mongodb_uri')
+$elastic_shards = hiera ('ilm_graylog::elasticsearch_shards')
+$elastic_replicas = hiera ('ilm_graylog::elasticsearch_replicas')
+$elastic_hosts = hiera_array ('ilm_graylog::elasticsearch_hosts')
+$graylog_mongodb_uri = hiera ('ilm_graylog::mongodb_uri')
 
 class { 'jdk_oracle': }
 
