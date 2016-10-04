@@ -4,6 +4,7 @@ $elastic_shards = hiera ('ilm_graylog::elasticsearch_shards')
 $elastic_replicas = hiera ('ilm_graylog::elasticsearch_replicas')
 $elastic_hosts = hiera ('ilm_graylog::elasticsearch_hosts')
 $graylog_mongodb_uri = hiera ('ilm_graylog::mongodb_uri')
+$graylog_version = hiera ('ilm_graylog::version')
 
 class { 'jdk_oracle': }
 
@@ -12,7 +13,7 @@ class { 'graylog::repository':
 }->
 
 class { 'graylog::server':
- package_version => '2.0.0-5',
+ package_version => $graylog_version,
  config          => {
    'password_secret' => 'emHOAf1uvzlsJwvPfbhzk9RnzLLbpg01G2KMFkitftB8iIjBq2TuDK02TX2qFh3xAcPQDlKzEC0gnYty8Mk4nuN1vTiXGt2M',
    'root_password_sha2' => '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
