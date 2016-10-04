@@ -1,9 +1,9 @@
 class graylog_natgeo::mongodb {
 
-#$disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
+$disable_hugepages = '/etc/init.d/disable-transparent-hugepages'
 
-$disable_hugepages = hiera('mongo::disable_hugepages')
-$replset_members = hiera_array('mongo::replset_members')
+$version = hiera('ilm_mongo::version')
+$replset_members = hiera_array('ilm_mongo::replset_members')
 
 file { "$disable_hugepages":
     ensure => present,
@@ -27,7 +27,7 @@ exec {"disable hugepages":
 
 class {'::mongodb::globals':
   manage_package_repo => true,
-  version => '3.0.4'
+  version => $version
 }->
 
 class {'::mongodb::server':
