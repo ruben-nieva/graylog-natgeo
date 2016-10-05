@@ -1,12 +1,12 @@
 class graylog_natgeo::master{
 
-$elastic_shards = hiera ('ilm_graylog::elasticsearch_shards')
-$elastic_replicas = hiera ('ilm_graylog::elasticsearch_replicas')
-$elastic_hosts = hiera ('ilm_graylog::elasticsearch_hosts')
-$graylog_mongodb_uri = hiera ('ilm_graylog::mongodb_uri')
-$graylog_version = hiera ('ilm_graylog::version')
-$repo_version = hiera('ilm_graylog::repo_version')
-$is_master = hiera('ilm_graylog::is_master', false)
+$elastic_shards = hiera ("ilm_graylog::elasticsearch_shards::${::environment}")
+$elastic_replicas = hiera ("ilm_graylog::elasticsearch_replicas::${::environment}")
+$elastic_hosts = hiera ("ilm_graylog::elasticsearch_hosts::${::environment}")
+$graylog_mongodb_uri = hiera ("ilm_graylog::mongodb_uri::${::environment}")
+$graylog_version = hiera ("ilm_graylog::version::${::environment}")
+$repo_version = hiera("ilm_graylog::repo_version::${::environment}")
+$is_master = hiera("ilm_graylog::is_master::${::environment}", false)
 
 class { 'jdk_oracle': }
 
