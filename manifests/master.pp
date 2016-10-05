@@ -6,7 +6,7 @@ $elastic_hosts = hiera ("ilm_graylog::elasticsearch_hosts::${::environment}")
 $graylog_mongodb_uri = hiera ("ilm_graylog::mongodb_uri::${::environment}")
 $graylog_version = hiera ("ilm_graylog::version::${::environment}")
 $repo_version = hiera("ilm_graylog::repo_version::${::environment}")
-$is_master = hiera("ilm_graylog::is_master::${::environment}", false)
+$is_master = hiera('ilm_graylog::is_master', false)
 
 class { 'jdk_oracle': }
 
