@@ -31,7 +31,7 @@ class { 'graylog::server':
    'elasticsearch_shards'                               => $elastic_shards,
    'elasticsearch_replicas'                             => $elastic_replicas,
    #'rest_listen_uri'                                    => 'http://0.0.0.0:12900/',
-   'rest_listen_uri'                                    => 'http://127.0.0.1:9000/api/',
+   'rest_listen_uri'                                    => 'http://0.0.0.0.9000/api/',
    'rest_transport_uri'                                 => "http://$ipaddress_eth1:9000/api/",
    'web_listen_uri'                                     => 'http://0.0.0.0:9000',
    #'mongodb_uri'                                        => 'mongodb://graylog-mongo01,graylog-mongo02,graylog-mongo03/graylog2',
