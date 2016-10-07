@@ -4,10 +4,8 @@ class { 'filebeat':
   outputs => {
     'logstash'     => {
      'hosts' => [
-        '172.28.128.31:5045',
-        'anotherserver:5044'
+        '172.28.128.31:5045'
       ],
-      'loadbalance' => false,
     },
   },
 }
