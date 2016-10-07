@@ -5,7 +5,9 @@ class { 'filebeat':
     'logstash'     => {
      'hosts' => [
         '172.28.128.31:5045',
+        'anotherserver:5044'
       ],
+      'loadbalance' => false,
     },
   },
 }
@@ -26,10 +28,3 @@ filebeat::prospector { 'auth-log':
 }
 
 }
-
-outputs => {
-    'elasticsearch' => {
-     'hosts' => [
-       'http://localhost:9200',
-       'http://anotherserver:9200'
-     ],
