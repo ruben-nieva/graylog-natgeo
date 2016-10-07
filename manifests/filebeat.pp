@@ -3,7 +3,9 @@ class graylog_natgeo::filebeat{
 class { 'filebeat':
   outputs => {
     'logstash'     => {
-     'hosts' => '172.28.128.31:5045',
+     'hosts' => [
+        '172.28.128.31:5045',
+      ],
     },
   },
 }
@@ -24,3 +26,10 @@ filebeat::prospector { 'auth-log':
 }
 
 }
+
+outputs => {
+    'elasticsearch' => {
+     'hosts' => [
+       'http://localhost:9200',
+       'http://anotherserver:9200'
+     ],
