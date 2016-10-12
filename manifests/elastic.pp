@@ -5,7 +5,7 @@ class { 'jdk_oracle': }
 $elastic_unicast_hosts = hiera_array("ilm_elastic::elastic_hosts::${::environment}")
 $elastic_version = hiera("ilm_elastic::version::${::environment}", '2.3.5')
 
-$elastic_cluster_name = "ilm-elastic-${::environment}"
+$elastic_cluster_name = hiera("ilm_elastic::cluster_name::${::environment}")
 
  class { 'elasticsearch':
   ensure => 'present',
