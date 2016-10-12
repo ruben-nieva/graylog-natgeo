@@ -1,18 +1,6 @@
 class graylog_natgeo::elastic{
 
- class { 'jdk_oracle': }
-
- file { '/etc/graylog/server':
-   ensure => 'directory',
-   owner  => 'root',
-   group  => 'root',
-   recurse => true
- }
-
- file { '/etc/graylog/server/node-id':
-   ensure => 'present',
-   require => File["/etc/graylog/server"],
- }
+class { 'jdk_oracle': }
 
 $elastic_unicast_hosts = hiera_array("ilm_elastic::elastic_hosts::${::environment}")
 $elastic_version = hiera("ilm_elastic::version::${::environment}", '2.3.5')
