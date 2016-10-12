@@ -2,10 +2,16 @@ class graylog_natgeo::elastic{
 
 class { 'jdk_oracle': }
 
-$elastic_unicast_hosts = hiera_array("ilm_elastic::${::environment}::elastic_hosts")
-$elastic_version = hiera("ilm_elastic::${::environment}::version", '2.3.5')
+#$elastic_unicast_hosts = hiera_array("ilm_elastic::${::environment}::elastic_hosts")
+#$elastic_version = hiera("ilm_elastic::${::environment}::version", '2.3.5')
+#$elastic_cluster_name = hiera("ilm_elastic::${::environment}::cluster_name")
 
-$elastic_cluster_name = hiera("ilm_elastic::${::environment}::cluster_name")
+$envconfig = hiera("ilm_elastic::${::environment}")
+validate_hash($envconfig)
+
+$elastic_version = $envconfig['version']
+$elastic_cluster_name = $envconfig['cluster_name']
+$elastic_unicast_hosts = join($envconfig['elastic_hosts'],",")
 
  class { 'elasticsearch':
   ensure => 'present',
