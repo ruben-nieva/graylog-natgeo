@@ -11,7 +11,8 @@ validate_hash($envconfig)
 
 $elastic_version = $envconfig['version']
 $elastic_cluster_name = $envconfig['cluster_name']
-$elastic_unicast_hosts = join($envconfig['elastic_hosts'],",")
+#$elastic_unicast_hosts = join($envconfig['elastic_hosts'],",")
+$elastic_unicast_hosts = $envconfig['elastic_hosts']
 
  class { 'elasticsearch':
   ensure => 'present',
