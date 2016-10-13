@@ -3,9 +3,12 @@ class graylog_natgeo::master{
 $elastic_shards = hiera ("ilm_graylog::elasticsearch_shards::${::environment}", '4')
 $elastic_replicas = hiera ("ilm_graylog::elasticsearch_replicas::${::environment}", '1')
 $elastic_hosts = hiera ("ilm_graylog::elasticsearch_hosts::${::environment}")
+
 $graylog_mongodb_uri = hiera ("ilm_graylog::mongodb_uri::${::environment}")
 $graylog_version = hiera ("ilm_graylog::version::${::environment}", '2.0.3-1')
 $repo_version = hiera("ilm_graylog::repo_version::${::environment}", '2.0')
+$elastic_cluster_name = hiera("ilm_graylog::cluster_name::${::environment}")
+
 $is_master = hiera('ilm_graylog::is_master', false)
 
 class { 'jdk_oracle': }
@@ -23,7 +26,7 @@ class { 'graylog::server':
    'root_timezone' =>  'America/Chicago',
    'message_journal_enabled'                            => true,
    'message_journal_dir'                                => '/var/lib/graylog-server/journal',
-   'elasticsearch_cluster_name'                         => 'elasticsearch',
+   'elasticsearch_cluster_name'                         => $elastic_cluster_name,
    'elasticsearch_network_host'                         => $hostname,
    'elasticsearch_discovery_zen_ping_multicast_enabled' => false,
    #'elasticsearch_discovery_zen_ping_unicast_hosts'     => "graylog-elasticsearch01:9300, graylog-elasticsearch02:9300, graylog-elasticsearch03:9300",
